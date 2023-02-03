@@ -1,0 +1,36 @@
+<form id="form-credentials">
+    <input type="email" id="email" name="email">
+    <input type="password" id="password" name="password">
+    <button type="submit">Enviar</button>
+  </form>
+  
+  <script>
+    document.getElementById("form-credentials").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var url = "http://localhost:8000/login";
+      var data = { email: email, password: password };
+  
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error en la petición");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    });
+  </script>
+  
